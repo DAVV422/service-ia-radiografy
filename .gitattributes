@@ -1,0 +1,2 @@
+modelo_deteccion.pth filter=lfs diff=lfs merge=lfs -text
+modelo_clasificacion.joblib filter=lfs diff=lfs merge=lfs -text
