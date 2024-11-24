@@ -280,7 +280,7 @@ def preprocesar_imagen2(imagen):
     return imagen_array
 
 # Carga el modelo
-modelo = load('./modelp_clasificacion.joblib')
+modelo = load('./modelo_clasificacion.joblib')
 
 @app.route('/clasificar', methods=['POST'])
 def clasificar_imagen():
