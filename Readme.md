@@ -10,7 +10,7 @@
 `
 2. Ejecutar el entorno virtual
 `
-    python -m venv .venv
+    .venv/Scripts/activate
 `
 3. Instalar las dependencias
 `
