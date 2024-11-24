@@ -11,7 +11,7 @@ import os
 app = Flask(__name__)
 
 # Carga del modelo
-MODEL_PATH = './object_detection_chestxray_pred_model.pth'
+MODEL_PATH = './modelo_deteccion.pth'
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = torch.load(MODEL_PATH, map_location=device)
 model.eval()
