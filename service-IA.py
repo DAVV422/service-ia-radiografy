@@ -266,40 +266,6 @@ def detectarjson():
         return jsonify({"error": str(e)}), 500
     
 
-#----------------- Clasificacion de la imagen, solo devuelve la posicion de la clasificacion -------------------
-# Preprocesa la imagen para cumplir con los requisitos del modelo
-def preprocesar_imagen2(imagen):
-    # Redimensiona a 320x320
-    imagen = imagen.resize((320, 320))
-    # Convertir a escala de grises
-    imagen = imagen.convert('L')
-    # Convertir a un array de NumPy y normalizar
-    imagen_array = np.array(imagen) / 255.0
-    # Redimensionar a (1, 320, 320, 1) para cumplir con la entrada del modelo
-    imagen_array = np.expand_dims(imagen_array, axis=(0, -1))
-    return imagen_array
-
-# Carga el modelo
-modelo = load('./modelo_clasificacion.joblib')
-
-@app.route('/clasificar', methods=['POST'])
-def clasificar_imagen():
-    if 'imagen' not in request.files:
-        return jsonify({"error": "No se encontró ninguna imagen"}), 400
-    
-    archivo_imagen = request.files['imagen']
-    imagen = Image.open(io.BytesIO(archivo_imagen.read()))
-    
-    # Preprocesar la imagen
-    imagen_preprocesada = preprocesar_imagen2(imagen)
-    
-    # Clasificar la imagen con el modelo cargado
-    prediccion = modelo.predict(imagen_preprocesada)
-    
-    # Retornar la predicción como JSON
-    return jsonify({"prediccion": int(np.argmax(prediccion))})
-#-----------------------------------
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
     #app.run(debug=True)
