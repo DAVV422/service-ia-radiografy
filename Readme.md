@@ -18,7 +18,7 @@
 `
 4. Ejecutar Flask
 `
-    flask --app service-IA run
+    flask --app serviceIA run
 `
 
 ## API
