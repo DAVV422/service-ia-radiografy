@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_file, send_from_directory
 from torchvision import transforms
 from PIL import Image, ImageDraw
 from joblib import load
+from flask_cors import CORS
 import numpy as np
 import base64
 import torch
@@ -9,6 +10,8 @@ import io
 import os
 
 app = Flask(__name__)
+
+CORS(app)
 
 # Carga del modelo
 MODEL_PATH = './modelo_deteccion.pth'
