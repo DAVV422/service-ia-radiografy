@@ -47,6 +47,7 @@ def obtener_imagen(filename):
 UPLOAD_FOLDER = './imagenes_procesadas'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Crear la carpeta si no existe
 
+#---------------------------------------------------------------------
 @app.route('/detectar', methods=['POST'])
 def detectar():
     if 'imagen' not in request.files:
@@ -113,7 +114,7 @@ def obtener_diagnostico(nombre_diagnostico):
         "Cardiomegaly": "Cardiomegalia: Aumento del tamaño cardiaco por hipertrofia o dilatación. Suele ser un signo de enfermedad cardiaca o síntoma de otra afección.",
         "Effusion": "Efusion Pleural: Acumulación anormal del líquido entre las capas delgadas del tejido (pleura) que recubre el pulmón y la pared de la cavidad torácica.",
         "Infiltrate": "Infiltrado Pulmonar: Sombras pulmonares anormales, están son el reflejo de una enfermedad o secuela de una enfermedad pulmonar.",
-        "Mass": "Tumores Mediastianles: Masas o neoplasias que se forman en el mediastino, una zona en la mitad del tórax que separa los pulmones.",
+        "Mass": "Tumores Mediastinales: Masas o neoplasias que se forman en el mediastino, una zona en la mitad del tórax que separa los pulmones.",
         "Nodule": "Nodulos Pulmonares: Densidad focal relativamente pequeña en el pulmón. Un nódulo pulmonar solitario (NPS) o lesión en forma de moneda, es una masa en el pulmón de menos de tres centímetros de diámetro.",
         "Pneumonia": "Neumonía: Infección en uno o ambos pulmones. Causa que los alvéolos pulmonares se llenen de líquido o pus.",
         "Pneumothorax": "Neumotórax: Presencia de aire en el espacio pleural que causa colapso pulmonar parcial o completo."
@@ -161,6 +162,7 @@ def detectar2():
         
         # Ordenar por puntaje y seleccionar los dos más altos
         top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:1]
+        #-----------------------------------------------------------------
         for idx in top_indices:
             box = predictions[0]["boxes"][idx]
             boxes.append(box.cpu().tolist())
