@@ -1,0 +1,11 @@
+.venv
+imagenes_procesadas
+Procfile
+modelo_clasificacion.joblib
+requirements_old.txt
+__pycache__
+*.pyc
+*.pyo
+*.git
+*.gitignore
+*.gitattributes
